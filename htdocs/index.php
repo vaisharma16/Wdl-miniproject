@@ -11,16 +11,18 @@
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $dbname = "user-registration";
+        $dbname = "TRAVEL";
         $name = $_POST['name'];
         $age = $_POST['age'];
         $gender = $_POST['gender'];
         $email = $_POST['email'];
         $contact = $_POST['phone'];
-        $address = $_POST['add'];
-        $year = $_POST['year'];
-        $branch = $_POST['branch'];
-        $subject = $_POST['sub'];
+        $from = $_POST['start'];
+        $to = $_POST['destination'];
+        $date = $_POST['date'];
+        $no_of_tickets = $_POST['num'];
+        $requirements = $_POST['suggestion'];
+        
 
         // Create connection
         $conn = new mysqli($servername, $username, $password, $dbname);
@@ -29,7 +31,7 @@
           die("Connection failed: " . $conn->connect_error);
         }
 
-          $sql= "INSERT INTO STUDENTS (name, age, gender, email, phone, year, branch, address, subject) VALUES ('$name', $age, '$gender', '$email', $contact, '$year', '$branch', '$address', '$subject') ";
+          $sql= "INSERT INTO Bookings (name, age, gender, email, phone, start, destination, date, number_of_tickets,suggestion) VALUES ('$name', $age, '$gender', '$email', '$contact', '$from', '$to', '$date', $no_of_tickets, '$requirements') ";
           if ($conn->query($sql) === TRUE) {
           echo "New record created successfully";
           } else {
@@ -46,7 +48,7 @@
   <form class="form" method="post">
     <div class="container">
       <div class="nav">
-          <h1>Student Details Form.</h1>
+          <h1>Travel Bookings.</h1>
       </div>
         
         <label for="input-1" >Name:</label>
@@ -73,33 +75,24 @@
         <br>
         <input type="number" name="phone" placeholder="Please enter your Phone number...">
         <br>
-        <label for="address">Address:</label>
+        <label for="address">From:</label>
         <br>
-        <textarea name="add" rows="8" cols="80"></textarea>
+        <input name="start" placeholder="Enter the start location" ></textarea>
         <br>
-        <label for="Year">Enter Your Year:</label>
+        <label for="Destination">To:</label>
         <br>
-        <select class="year" name="year">
-          <option name="year" value="FE">FE</option>
-          <option name="year" value="SE">SE</option>
-          <option name="year" value="TE">TE</option>
-          <option name="year" value="BE">BE</option>
-        </select>
+        <input type="text" name="destination" placeholder="Enter a destination....">
         <br>
-        <label for="Branch">Please Enter Your Branch:</label>
-        <select class="branch" name="branch">
-          <option name="branch" value="CS">Computer Science.</option>
-          <option name="branch" value="CIVIL">Civil.</option>
-          <option name="branch" value="MECH">Mechanical.</option>
-          <option name="branch" value="ETRX">Etrx</option>
-          <option name="branch" value="EXTC">Extc</option>
-          <option name="branch" value="IT">IT</option>
-          <option name="branch" value="br">other</option>
-        </select>
+        <label for="Date">Date:</label>
+        <input type="date" name="date">
         <br>
-        <label for="option">Please Enter your Specialization Subject:</label>
+        <label for="option">No of Tickets:</label>
         <br>
-        <input type="text" name="sub" value="" placeholder="Please enter a subject....">
+        <input type="number" name="num" value="" placeholder="Please enter the no of tickets....">
+        <br>
+        <label for="option">Any Other Requests?</label>
+        <br>
+        <input type="text" name="suggestion" value="" placeholder="Please enter it here....">
         <br>
         <input id="button" type="submit" name="submit" value="Submit" >
         <br>
