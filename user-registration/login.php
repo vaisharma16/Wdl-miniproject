@@ -50,7 +50,7 @@ if (! empty($_POST["login-btn"])) {
 					</div>
 					<div class="row">
 	
-						<input href="/htdocs/index.php" class="btn" type="submit" name="login-btn" 
+						<input href="index.html" class="btn" type="submit" name="login-btn" 
 							id="login-btn" value="Login">
 					</div>
 				</form>
